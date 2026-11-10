@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9fd">
+  <meta name="description" content="AeroPatch is an interactive visual agent workspace for object-level image and video editing. Watch the demos and explore its segmentation, tracking, and human review workflows.">
+  <meta property="og:title" content="AeroPatch · Interactive Visual Agent Workspace">
+  <meta property="og:description" content="From natural-language instructions to editable image masks and video tracks. A local-first desktop research prototype.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/desktop-demo.jpg">
+  <title>AeroPatch · Interactive Visual Agent Workspace</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="preload" href="assets/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="AeroPatch home"><img src="assets/logo.svg" width="34" height="34" alt=""><span>AeroPatch</span></a>
+      <nav aria-label="Project navigation">
+        <a href="#demos">Demos</a>
+        <a href="#overview">Overview</a>
+        <a href="#approach">Approach</a>
+        <a href="#project">Project</a>
+      </nav>
+      <span class="prototype-label"><span aria-hidden="true"></span>Research prototype</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top" aria-labelledby="project-title">
+      <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> Language · Vision · Interaction</p>
+      <h1 id="project-title">Aero<span>Patch</span></h1>
+      <p class="hero-subtitle">An interactive visual agent workspace<br class="desktop-break"> for images and video.</p>
+      <p class="hero-description">Describe a task. Let the agent use visual tools.<br>Inspect, refine, and export the results in one desktop workspace.</p>
+      <p class="authors">Zishan Shao<span> · </span>Sicheng Song<span> · </span>Wenhao Wu<span> · </span>Lixun Zhang<span> · </span>Ting Jiang<span> · </span>Yiming Qin<span> · </span>Yuejia Liu<span> · </span>Jinhee Kim<span> · </span>Kangning Cui<span> · </span>Fan Yang<span> · </span>Yiran Chen</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#demos"><span class="play-icon small" aria-hidden="true"></span>Watch the demos</a>
+        <a class="button" href="#approach">Explore the approach <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="availability">Local-first desktop <span aria-hidden="true">/</span> Human review <span aria-hidden="true">/</span> Source code private</p>
+    </section>
+
+    <section class="demo-section wrap" id="demos" aria-labelledby="demo-heading">
+      <div class="demo-heading">
+        <h2 class="visually-hidden" id="demo-heading">Watch AeroPatch in action</h2>
+        <div class="demo-tabs" role="tablist" aria-label="Choose a demonstration">
+          <button type="button" role="tab" id="tab-main" aria-controls="demo-panel" aria-selected="true" tabindex="0" data-demo="main"><span class="tab-number">01</span>Desktop agent</button>
+          <button type="button" role="tab" id="tab-image" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-demo="image"><span class="tab-number">02</span>Image workflow</button>
+          <button type="button" role="tab" id="tab-video" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-demo="video"><span class="tab-number">03</span>Video workflow</button>
+        </div>
+        <span class="demo-label">Recorded demonstrations</span>
+      </div>
+      <div id="demo-panel" role="tabpanel" aria-labelledby="tab-main" tabindex="0">
+        <div class="player" id="demo-player">
+          <img id="demo-poster" src="assets/desktop-demo.jpg" width="1920" height="1080" alt="AeroPatch desktop with an interactive image canvas, object selections, and an agent conversation" fetchpriority="high">
+          <button type="button" class="play-button" id="play-demo" aria-label="Play the AeroPatch desktop agent demonstration">
+            <span class="play-circle"><span class="play-icon" aria-hidden="true"></span></span>
+            <span class="play-caption">Play demonstration <span id="demo-duration">English · 1:28</span></span>
+          </button>
+        </div>
+        <div class="demo-caption">
+          <div><h3 id="demo-title">From a conversation to a visual operation.</h3><p id="demo-description">The agent works with the canvas, calls editing tools, and returns results you can inspect and refine.</p></div>
+          <a id="demo-direct" href="https://drive.google.com/file/d/141-BHLHDrvMQKxPheblWc5odwJA2KXNz/view" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <p class="player-note">Videos play through Google Drive. If the embedded player is unavailable, use “Open video”.</p>
+      <noscript><p class="noscript-note">Watch directly: <a href="https://drive.google.com/file/d/141-BHLHDrvMQKxPheblWc5odwJA2KXNz/view">Desktop agent</a> · <a href="https://drive.google.com/file/d/1UpFiPM-1mmmjUo2nDyHInA8MW1fe06cS/view">Image workflow</a> · <a href="https://drive.google.com/file/d/1lzaeUMJtiQKYdeawwIJ8739OYiFgN5tP/view">Video workflow</a>.</p></noscript>
+    </section>
+
+    <section class="section wrap overview" id="overview" aria-labelledby="overview-title">
+      <div class="section-intro">
+        <p class="eyebrow">The workspace</p>
+        <h2 id="overview-title">Language meets<br>the canvas.</h2>
+        <p>Visual tasks need more than a text response. AeroPatch connects an agent to image and video tools, editable project state, and a canvas where people can review the outcome.</p>
+        <p class="subtle">The current prototype runs as a local desktop application, with local model workers and configurable API connections.</p>
+      </div>
+      <div class="capabilities">
+        <article class="capability"><span class="capability-index">01 / INTERACT</span><h3>Point, select, or describe.</h3><p>Open an image or video. Mark a target with a point or box, trace a contour, or ask the agent for an object-level operation.</p><span class="example-prompt">“Find all palm crowns in this image.”</span></article>
+        <article class="capability"><span class="capability-index">02 / EXECUTE</span><h3>Let visual tools do the work.</h3><p>The agent can use segmentation, object discovery, and temporal tracking workflows, then inspect the resulting masks and artifacts.</p></article>
+        <article class="capability"><span class="capability-index">03 / REVIEW</span><h3>Keep the result editable.</h3><p>Review proposed masks and uncertain video spans. Refine or confirm drafts before exporting annotations, images, or rendered video.</p></article>
+      </div>
+    </section>
+
+    <section class="approach-section" id="approach" aria-labelledby="approach-title">
+      <div class="wrap section">
+        <div class="section-heading"><div><p class="eyebrow">Technical approach</p><h2 id="approach-title">One interaction loop.<br>Specialized visual workflows.</h2></div><p class="heading-note">The agent chooses tools.<br>The workspace preserves evidence and user control.</p></div>
+        <ol class="workflow" aria-label="AeroPatch execution and review workflow">
+          <li><span class="step-number">01</span><h3>Task &amp; context</h3><p>Instructions, media, selections, and existing masks.</p></li>
+          <li><span class="step-number">02</span><h3>Agent orchestration</h3><p>Interpret the goal, choose tools, and inspect their output.</p></li>
+          <li><span class="step-number">03</span><h3>Visual execution</h3><p>Run local workers or API-assisted image and video workflows.</p></li>
+          <li><span class="step-number">04</span><h3>Review &amp; export</h3><p>Inspect drafts, refine annotations, and save the result.</p></li>
+        </ol>
+        <div class="workflow-details">
+          <details open><summary><span><span class="detail-icon" aria-hidden="true">▧</span>Image discovery &amp; segmentation</span><span class="expand-icon" aria-hidden="true">+</span></summary><div class="detail-content"><p>Tiled visual localization finds individual objects. Bounded local recovery revisits a region with crowded detections, while grouped SAM segmentation turns object boxes into masks. Instance association links duplicate observations across views.</p><p>Source coordinates and immutable mask revisions preserve how each candidate was produced. Candidates remain available for human inspection and acceptance.</p><a href="#demos" data-select-demo="image">Watch the image workflow <span aria-hidden="true">↗</span></a></div></details>
+          <details><summary><span><span class="detail-icon" aria-hidden="true">▤</span>Video tracking &amp; identity review</span><span class="expand-icon" aria-hidden="true">+</span></summary><div class="detail-content"><p>Local SAM propagation tracks a selected target across frames. The separate ARCH workflow adds temporal census, identity checks, retrace, and recovery to investigate suspected drift.</p><p>Uncertain intervals retain review flags. The timeline and canvas let users inspect tracking drafts before accepting or exporting them.</p><a href="#demos" data-select-demo="video">Watch the video workflow <span aria-hidden="true">↗</span></a></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap engineering" aria-labelledby="engineering-title">
+      <div class="section-intro"><p class="eyebrow">Engineering focus</p><h2 id="engineering-title">A system built<br>around the result.</h2><p>Connecting a model to a tool is one step. Keeping long visual tasks observable, reviewable, and consistent with an interactive editor takes a shared execution model.</p></div>
+      <dl class="engineering-list">
+        <div><dt>Shared canvas &amp; agent state</dt><dd>A React interface and native Python bridge connect editor commands, object selections, masks, and project state to the agent.</dd></div>
+        <div><dt>Background execution</dt><dd>Long workflows report phase progress, support cancellation, and return completion notifications to the active session.</dd></div>
+        <div><dt>Evidence &amp; revisions</dt><dd>Coordinate transforms, mask revisions, run artifacts, and usage records make results inspectable and preserve their provenance.</dd></div>
+        <div><dt>Human decisions</dt><dd>Inference outputs and review decisions are stored separately, so a proposed annotation remains a draft until reviewed.</dd></div>
+      </dl>
+    </section>
+
+    <section class="wrap scope-section" aria-labelledby="scope-title">
+      <div class="scope-heading"><p class="eyebrow">Current scope</p><h2 id="scope-title">A working prototype.<br>A research direction.</h2></div>
+      <div class="scope-copy"><p><strong>Demonstrated today.</strong> Agent-driven visual tool use, interactive image annotation, local video tracking, and verification and review workflows in selected scenarios. The videos show recorded prototype runs.</p><p><strong>Looking ahead.</strong> Support Physical AI training data curation by identifying consequential visual failures and helping decide which data to keep, repair, or reject. Dataset-scale autonomous curation is a research goal.</p><p class="subtle">Generated masks still require review; identity checks do not establish correctness on every frame. Local segmentation can run without a cloud account; agent and VLM-assisted workflows use configured model connections.</p></div>
+    </section>
+
+    <section class="section wrap project-section" id="project" aria-labelledby="project-section-title">
+      <p class="eyebrow">Project &amp; access</p>
+      <h2 id="project-section-title">See the work. Start a conversation.</h2>
+      <p>AeroPatch is a collaborative research and engineering project.<br>The demos and this project overview are public; the application source code remains private.</p>
+      <div class="hero-actions"><a class="button primary" href="#demos">Watch AeroPatch <span aria-hidden="true">↗</span></a><a class="button" href="https://github.com/Zishan-Shao" target="_blank" rel="noopener noreferrer">Zishan Shao on GitHub <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#top"><img src="assets/logo.svg" width="28" height="28" alt=""><span>AeroPatch</span></a><p>Interactive visual agent workspace · 2026</p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></div></footer>
+</body>
+</html>
