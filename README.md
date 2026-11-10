@@ -6,7 +6,7 @@ The public project website for **AeroPatch**, an interactive visual agent worksp
 
 Authors, in project order: Zishan Shao, Sicheng Song, Wenhao Wu, Lixun Zhang, Ting Jiang, Yiming Qin, Yuejia Liu, Jinhee Kim, Kangning Cui, Fan Yang, and Yiran Chen.
 
-This site uses plain HTML, CSS, JavaScript, and a locally hosted Geist font. It has no runtime dependencies, API keys, analytics, or application backend. Demo videos are embedded from individual Google Drive files, loaded after the visitor presses Play. An “Open video” link stays available if embedding is blocked.
+This site uses plain HTML, CSS, JavaScript, and a locally hosted Geist font. It has no runtime dependencies, API keys, analytics, or application backend. Four lightweight GIF loops are extracted from the team's main demo. The three full videos are embedded from individual Google Drive files after the visitor presses Play. An “Open video” link stays available if embedding is blocked.
 
 ## 本地预览
 
@@ -46,8 +46,8 @@ ZIP 内含网页、品牌素材、构建脚本、说明和 GitHub Actions 工作
 
 - 项目介绍、作者顺序、技术说明：`index.html`。
 - 视觉样式与手机布局：`styles.css`。
-- 三个视频及其封面、说明：`app.js` 中的 `demos`。主视频链接也出现在 HTML 初始状态和无 JavaScript 的备用链接中。
-- 更换视频后同步更新 `tools/build.py` 的 `DEMO_IDS` 允许列表。
+- 三个视频及其封面、说明：`index.html` 的三个 `.video-player` 区块。`app.js` 控制点击播放和切换时停止旧视频；每个视频都有直接的 Drive 备用链接。
+- 更换视频后同步更新 `tools/build.py` 的 `DEMO_IDS` 允许列表。四个案例 GIF 和静态封面位于 `assets/`。
 - 所有资源路径都是相对路径，支持 GitHub Pages 的项目子路径。
 
 发布前确认单个 demo 文件允许匿名查看。只分享视频文件，不把包含非公开材料的上级文件夹链接放到网站。页面保留现有视频的权限，不更改 Drive 共享设置。

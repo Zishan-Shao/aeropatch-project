@@ -15,6 +15,11 @@ No folder links, application downloads, source archives, credentials, or product
 ## Assets
 
 - `desktop-demo.jpg`: frame at 17 seconds from the team's English desktop demo, the same recording as the English Drive file above.
+- `case-warehouse.gif` / `.jpg`: 29.5–33.0 seconds of the main English demo, showing warehouse tracking.
+- `case-driving.gif` / `.jpg`: 42.4–46.2 seconds, showing the pedestrian comparison.
+- `case-robotics.gif` / `.jpg`: 50.1–53.9 seconds, showing the robot-arm scene.
+- `case-image-editing.gif` / `.jpg`: 62.7–66.7 seconds, showing image-mask refinement.
+- Case GIFs are 520 × 293 pixels at 8 fps with 96-color palettes. JPEG frames are served when a visitor requests reduced motion.
 - `image-workflow.jpg`: the team's existing image-workflow title card.
 - `video-workflow.jpg`: the team's existing video-workflow title card.
 - `logo.svg`: the existing AeroPatch minimal brand mark.

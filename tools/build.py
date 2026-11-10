@@ -18,6 +18,10 @@ STATIC_FILES = (
     "index.html", "styles.css", "app.js", ".nojekyll",
     "assets/logo.svg", "assets/desktop-demo.jpg",
     "assets/image-workflow.jpg", "assets/video-workflow.jpg",
+    "assets/case-warehouse.gif", "assets/case-warehouse.jpg",
+    "assets/case-driving.gif", "assets/case-driving.jpg",
+    "assets/case-robotics.gif", "assets/case-robotics.jpg",
+    "assets/case-image-editing.gif", "assets/case-image-editing.jpg",
     "assets/geist-latin.woff2", "assets/Geist-LICENSE.txt",
 )
 REPOSITORY_FILES = STATIC_FILES + (
@@ -36,12 +40,15 @@ class PageParser(HTMLParser):
         super().__init__()
         self.ids = set()
         self.links = []
+        self.demo_ids = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if "id" in attrs:
             assert attrs["id"] not in self.ids, "Duplicate HTML id: " + attrs["id"]
             self.ids.add(attrs["id"])
+        if "data-drive-id" in attrs:
+            self.demo_ids.append(attrs["data-drive-id"])
         for attr in ("href", "src"):
             if attr in attrs:
                 self.links.append(attrs[attr])
@@ -62,6 +69,8 @@ def validate():
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     parser = PageParser()
     parser.feed(html)
+    assert len(parser.demo_ids) == 3 and set(parser.demo_ids) == DEMO_IDS, "Expected exactly the three guide demos"
+    linked_demo_ids = set()
     for link in parser.links:
         parts = urlsplit(link)
         if not parts.scheme:
@@ -74,19 +83,20 @@ def validate():
             if parts.netloc == "drive.google.com":
                 match = re.fullmatch(r"/file/d/([^/]+)/(view|preview)", parts.path)
                 assert match and match.group(1) in DEMO_IDS, "Only approved individual demos may be linked"
+                linked_demo_ids.add(match.group(1))
             else:
                 assert link in {
                     "https://github.com/Zishan-Shao",
+                    "https://github.com/Zishan-Shao/aeropatch-project",
                     "https://zishan-shao.github.io/aeropatch-project/",
                 }, "Unexpected external link: " + link
+    assert linked_demo_ids == DEMO_IDS, "Each demo needs a direct Drive fallback link"
     for name in ("index.html", "styles.css", "app.js"):
         text = (ROOT / name).read_text(encoding="utf-8")
         assert "drive/folders" not in text, "Do not link a Drive folder containing source code"
         assert "github.com/Zishan-Shao/AeroPatch" not in text, "Do not link application source"
         for asset in re.findall(r"assets/[a-zA-Z0-9_.-]+", text):
             assert asset in STATIC_FILES, "Unpackaged asset: " + asset
-    js = (ROOT / "app.js").read_text(encoding="utf-8")
-    assert set(re.findall(r'id: "([a-zA-Z0-9_-]+)"', js)) == DEMO_IDS, "Check demo IDs"
     print("Validated page links, anchors, demo IDs, and publication allowlist.")
 
 
