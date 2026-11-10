@@ -75,7 +75,10 @@ def validate():
                 match = re.fullmatch(r"/file/d/([^/]+)/(view|preview)", parts.path)
                 assert match and match.group(1) in DEMO_IDS, "Only approved individual demos may be linked"
             else:
-                assert link == "https://github.com/Zishan-Shao", "Unexpected external link: " + link
+                assert link in {
+                    "https://github.com/Zishan-Shao",
+                    "https://zishan-shao.github.io/aeropatch-project/",
+                }, "Unexpected external link: " + link
     for name in ("index.html", "styles.css", "app.js"):
         text = (ROOT / name).read_text(encoding="utf-8")
         assert "drive/folders" not in text, "Do not link a Drive folder containing source code"

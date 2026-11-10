@@ -2,6 +2,8 @@
 
 The public project website for **AeroPatch**, an interactive visual agent workspace for image and video tasks. The application source code is private and is not included in this website repository.
 
+**Live page:** https://zishan-shao.github.io/aeropatch-project/
+
 Authors, in project order: Zishan Shao, Sicheng Song, Wenhao Wu, Lixun Zhang, Ting Jiang, Yiming Qin, Yuejia Liu, Jinhee Kim, Kangning Cui, Fan Yang, and Yiran Chen.
 
 This site uses plain HTML, CSS, JavaScript, and a locally hosted Geist font. It has no runtime dependencies, API keys, analytics, or application backend. Demo videos are embedded from individual Google Drive files, loaded after the visitor presses Play. An “Open video” link stays available if embedding is blocked.
