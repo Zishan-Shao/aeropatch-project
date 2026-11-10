@@ -1,6 +1,6 @@
 # AeroPatch project page
 
-The public project website for **AeroPatch**, an interactive visual agent workspace for image and video tasks. The application source code is private and is not included in this website repository.
+The public project website for **AeroPatch**, a visual intelligence workspace for the physical world. The current desktop prototype finds, tracks, and edits objects in images and video with reviewable results. The application source code is private and is not included in this website repository.
 
 **Live page:** https://zishan-shao.github.io/aeropatch-project/
 
